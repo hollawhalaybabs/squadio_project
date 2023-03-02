@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="action_metal_price_wizard" model="ir.actions.act_window">
+        <field name="name">Metal Price</field>
+        <field name="res_model">metal.price.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+
+    </record>
+
+    <menuitem
+        id="metal_price_main_menu"
+        parent="account.menu_finance"
+        name="Metal Price"
+        action="action_metal_price_wizard"
+        sequence="4"/>
+    <!-- <menuitem
+        id="metal_price_sub_menu"
+        parent="metal_price_main_menu"
+        name="Set Price"
+        action="action_metal_price_wizard"
+        sequence="1"/> -->
+        
+     
+    <record id="metal_price_tree_view" model="ir.ui.view">
+        <field name="name">metal.price.wizard.tree</field>
+        <field name="model">metal.price.wizard</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="metal_price" readonly="0"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="metal_price_form_view" model="ir.ui.view">
+        <field name="name">metal.price.wizard.form</field>
+        <field name="model">metal.price.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Wizard">
+                <header> 
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="metal_price" placeholder="Add New Price" readonly="0"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="post_action" string="Submit" type="object" default_focus="1" class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </sheet> 
+            </form>
+        </field>
+    </record>
+
+</odoo>
